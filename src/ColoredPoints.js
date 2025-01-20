@@ -108,9 +108,9 @@ function addActionsForHtmlUI() {
   document.getElementById('triButton').onclick = function() {g_selectedType = TRIANGLE;};
   document.getElementById('circleButton').onclick = function() {g_selectedType = CIRCLE;};
  
-  document.getElementById('redSlide').addEventListener('mouseup', function() { g_selectedColor[0] = this.value/100; });
-  document.getElementById('greenSlide').addEventListener('mouseup', function() { g_selectedColor[1] = this.value/100; });
-  document.getElementById('blueSlide').addEventListener('mouseup', function() { g_selectedColor[2] = this.value/100; });
+  document.getElementById('redSlide').addEventListener('mouseup', function() { g_selectedColor[0] = this.value/100; updateColorPreview();}); 
+  document.getElementById('greenSlide').addEventListener('mouseup', function() { g_selectedColor[1] = this.value/100; updateColorPreview();});
+  document.getElementById('blueSlide').addEventListener('mouseup', function() { g_selectedColor[2] = this.value/100; updateColorPreview();});
 
   document.getElementById('sizeSlide').addEventListener('mouseup', function() { g_selectedSize = this.value; });
   document.getElementById('segmentSlide').addEventListener('mouseup', function() { g_segments = this.value; });
@@ -267,3 +267,11 @@ function drawMyPixelArt() {
   }
   renderAllShapes();
 }
+
+function updateColorPreview() {
+  let r = g_selectedColor[0] * 255;
+  let g = g_selectedColor[1] * 255;
+  let b = g_selectedColor[2] * 255;
+  document.getElementById('colorPreview').style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+}
+
